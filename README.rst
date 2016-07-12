@@ -5,15 +5,15 @@ etphantomutil
 .. image:: https://img.shields.io/pypi/v/etphantomutil.svg
         :target: https://pypi.python.org/pypi/etphantomutil
 
-.. image:: https://img.shields.io/travis/crbs/etphantomutil.svg
-        :target: https://travis-ci.org/crbs/etphantomutil
+.. image:: https://img.shields.io/travis/CRBS/etphantomutil.svg
+        :target: https://travis-ci.org/CRBS/etphantomutil
 
 .. image:: https://readthedocs.io/projects/etphantomutil/badge/?version=latest
         :target: https://readthedocs.io/projects/etphantomutil/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://requires.io/github/crbs/etphantomutil/requirements.svg?branch=master
-        :target: https://requires.io/github/crbs/etphantomutil/requirements?branch=master
+.. image:: https://requires.io/github/CRBS/etphantomutil/requirements.svg?branch=master
+        :target: https://requires.io/github/CRBS/etphantomutil/requirements?branch=master
         :alt: Dependencies
 
 
