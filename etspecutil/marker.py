@@ -143,10 +143,10 @@ class Marker(object):
         if self._z is None:
             return ''
 
-        return '{:>6d} {:>11f} ' \
-               '{:>11f} {:>11f}'.format(self._index, self._x,
-                                        self._y,
-                                        self._z)
+        return '{index:>6d} {x:>11f} ' \
+               '{y:>11f} {z:>11f}'.format(index=self._index, x=self._x,
+                                          y=self._y,
+                                          z=self._z)
 
 
 class MarkersFrom3DMarkersFileFactory(object):
