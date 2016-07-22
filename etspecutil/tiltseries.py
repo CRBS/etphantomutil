@@ -5,16 +5,16 @@ import logging
 import re
 import math
 import shutil
-from etphantomutil import util
-from etphantomutil.marker import MarkersFrom3DMarkersFileFactory
-from etphantomutil.marker import CommonByIndexMarkersListFilter
+from etspecutil import util
+from etspecutil.marker import MarkersFrom3DMarkersFileFactory
+from etspecutil.marker import CommonByIndexMarkersListFilter
 
 
 logger = logging.getLogger(__name__)
 
 
 class TiltSeriesCreator(object):
-    """Creates a phantom tilt series using ETPhantom
+    """Creates a phantom tilt series using ETSpec
     """
     MRC_EXT = '.mrc'
     UNI_MRC_EXT = '_uni' + MRC_EXT
@@ -73,10 +73,10 @@ class TiltSeriesCreator(object):
         else:
             self._rawrotationangles = theargs.rotationangles
 
-        if theargs.etphantombin == '':
-            self._etphantombin = theargs.etphantombin
+        if theargs.etspecbin == '':
+            self._etspecbin = theargs.etspecbin
         else:
-            self._etphantombin = os.path.abspath(theargs.etphantombin)
+            self._etspecbin = os.path.abspath(theargs.etspecbin)
 
     def initialize(self):
         """Initializes file system
@@ -164,8 +164,8 @@ class TiltSeriesCreator(object):
             self._run_volume_marker()
 
             # write the parameter file
-            self._write_etphantom_parameter_file()
-            self._write_etphantom_prepared_project_file()
+            self._write_etspec_parameter_file()
+            self._write_etspec_prepared_project_file()
 
         finally:
             logger.debug('Changing back to ' + current_working_dir +
@@ -175,7 +175,7 @@ class TiltSeriesCreator(object):
     def _run_all_255(self):
         """Runs all_255 command
         """
-        cmd = (os.path.join(self._etphantombin, 'all_255') + ' ' + self._inputmrc + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'all_255') + ' ' + self._inputmrc + ' ' +
                os.path.join(self._workdir, self._unimrc))
         exitcode, out, err = util.run_mpiexec_command(cmd, self._mpiexec,
                                                       self._cores)
@@ -185,7 +185,7 @@ class TiltSeriesCreator(object):
     def _run_extend_mean(self):
         """Runs exteand_mean command
         """
-        cmd = (os.path.join(self._etphantombin, 'extend_mean') + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'extend_mean') + ' ' +
                os.path.join(self._workdir, self._unimrc) + ' ' +
                os.path.join(self._workdir, self._extmeanmrc))
         exitcode, out, err = util.run_mpiexec_command(cmd, self._mpiexec,
@@ -196,7 +196,7 @@ class TiltSeriesCreator(object):
     def _run_raw_tilt(self):
         """Runs exteand_mean command
         """
-        cmd = (os.path.join(self._etphantombin, 'rawtlt') + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'rawtlt') + ' ' +
                str(self._begintilt) + ' ' + str(self._tiltshift) + ' ' +
                str(self._endtilt) + ' ' +
                os.path.join(self._workdir, self._rawtlt))
@@ -242,7 +242,7 @@ class TiltSeriesCreator(object):
         if not os.path.isdir(warpzdir):
             os.makedirs(warpzdir)
 
-        cmd = (os.path.join(self._etphantombin, 'warpZ_inter_del') + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'warpZ_inter_del') + ' ' +
                os.path.join(self._workdir, self._extmeanmrc) + ' ' +
                os.path.join(self._workdir, self._extmeanmrc) + ' ' +
                os.path.join(warpzdir, self._warpz) + ' ' +
@@ -262,7 +262,7 @@ class TiltSeriesCreator(object):
 
         warpzdir = self._get_warpz_dir()
 
-        cmd = (os.path.join(self._etphantombin, 'volume_marker') + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'volume_marker') + ' ' +
                os.path.join(self._workdir, self._extmeanmrc) + ' ' +
                os.path.join(warpzdir, self._warpz) + ' ' +
                os.path.join(markerdir, self._markermrc) + ' ' +
@@ -438,7 +438,7 @@ class TiltSeriesCreator(object):
         if not os.path.isdir(projectiondir):
             os.makedirs(projectiondir)
 
-        cmd = (os.path.join(self._etphantombin, 'project_all') + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'project_all') + ' ' +
                os.path.join(self._get_marker_dir(), self._markermrc) + ' ' +
                os.path.join(self._workdir, self._projectionmrc) + ' ' +
                str(self._begintilt) + ' ' +
@@ -472,7 +472,7 @@ class TiltSeriesCreator(object):
         if not os.path.isdir(trackingdir):
             os.makedirs(trackingdir)
 
-        cmd = (os.path.join(self._etphantombin, 'volume_marker_position_all') +
+        cmd = (os.path.join(self._etspecbin, 'volume_marker_position_all') +
                ' ' +
                os.path.join(self._get_marker_dir(), self._markermrc) + ' ' +
                os.path.join(self._get_marker_dir(),
@@ -560,8 +560,8 @@ class TiltSeriesCreator(object):
             raise Exception('Invalid output from header : ' + out)
         return list[1], list[2], list[3]
 
-    def _write_etphantom_parameter_file(self):
-        """Writes etphantom parameter file
+    def _write_etspec_parameter_file(self):
+        """Writes etspec parameter file
         """
         f = open(os.path.join(self._workdir, self._mrcname +
                               TiltSeriesCreator.PAR_EXT), 'w')
@@ -589,8 +589,8 @@ class TiltSeriesCreator(object):
         f.flush()
         f.close()
 
-    def _write_etphantom_prepared_project_file(self):
-        """Writes etphantom project file for prepared
+    def _write_etspec_prepared_project_file(self):
+        """Writes etspec project file for prepared
            phase
         """
         f = open(os.path.join(self._workdir, self._mrcname +

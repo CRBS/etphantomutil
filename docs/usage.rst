@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use etphantomutil in a project::
+To use etspecutil in a project::
 
-    import etphantomutil
+    import etspecutil

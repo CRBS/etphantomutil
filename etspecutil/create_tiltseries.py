@@ -5,8 +5,8 @@ import argparse
 import logging
 import multiprocessing
 
-import etphantomutil
-from etphantomutil.tiltseries import TiltSeriesCreator
+import etspecutil
+from etspecutil.tiltseries import TiltSeriesCreator
 
 logger = logging.getLogger(__name__)
 
@@ -37,9 +37,9 @@ def _setup_logging(theargs):
 
     logger.setLevel(theargs.numericloglevel)
     logging.basicConfig(format=theargs.logformat)
-    logging.getLogger('etphantomutil.marker').setLevel(theargs.numericloglevel)
-    logging.getLogger('etphantomutil.util').setLevel(theargs.numericloglevel)
-    logging.getLogger('etphantomutil.tiltseries').setLevel(theargs.numericloglevel)
+    logging.getLogger('etspecutil.marker').setLevel(theargs.numericloglevel)
+    logging.getLogger('etspecutil.util').setLevel(theargs.numericloglevel)
+    logging.getLogger('etspecutil.tiltseries').setLevel(theargs.numericloglevel)
 
 
 def create_tiltseries(theargs):
@@ -121,15 +121,15 @@ def _parse_arguments(desc, args):
                              'for processing.  (default is number'
                              'of cores on machine or 1 if unable'
                              'to determine core count)')
-    parser.add_argument("--etphantombin", default='',
-                        help='Sets directory where etphantom binaries reside'
+    parser.add_argument("--etspecbin", default='',
+                        help='Sets directory where ETspec/ETPhantom binaries reside'
                              '(default empty string)')
     parser.add_argument("--log", dest="loglevel", default='WARNING',
                         choices=['DEBUG', 'INFO', 'WARNING', 'ERROR',
                                  'CRITICAL'],
                         help="Sets the logging level (default WARNING)")
     parser.add_argument('--version', action='version',
-                        version=('%(prog)s ' + etphantomutil.__version__))
+                        version=('%(prog)s ' + etspecutil.__version__))
 
     return parser.parse_args(args, namespace=pargs)
 
@@ -137,12 +137,12 @@ def _parse_arguments(desc, args):
 def main():
     desc = """
               Wrapper application that creates simulated electron tomography
-              tilt series using from SBEM MRC using ETphantom
+              tilt series using from SBEM MRC using ETspec
            """
 
     theargs = _parse_arguments(desc, sys.argv[1:])
     theargs.program = sys.argv[0]
-    theargs.version = etphantomutil.__version__
+    theargs.version = etspecutil.__version__
     _setup_logging(theargs)
 
     create_tiltseries(theargs)

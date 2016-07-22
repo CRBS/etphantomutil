@@ -1,26 +1,27 @@
 ===============================
-etphantomutil
+etspecutil
 ===============================
 
-.. image:: https://img.shields.io/pypi/v/etphantomutil.svg
-        :target: https://pypi.python.org/pypi/etphantomutil
+.. image:: https://img.shields.io/pypi/v/etspecutil.svg
+        :target: https://pypi.python.org/pypi/etspecutil
 
-.. image:: https://img.shields.io/travis/CRBS/etphantomutil.svg
-        :target: https://travis-ci.org/CRBS/etphantomutil
+.. image:: https://img.shields.io/travis/CRBS/etspecutil.svg
+        :target: https://travis-ci.org/CRBS/etspecutil
 
-.. image:: https://readthedocs.io/projects/etphantomutil/badge/?version=latest
-        :target: https://readthedocs.io/projects/etphantomutil/?badge=latest
+.. image:: https://readthedocs.io/projects/etspecutil/badge/?version=latest
+        :target: https://readthedocs.io/projects/etspecutil/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://requires.io/github/CRBS/etphantomutil/requirements.svg?branch=master
-        :target: https://requires.io/github/CRBS/etphantomutil/requirements?branch=master
+.. image:: https://requires.io/github/CRBS/etspecutil/requirements.svg?branch=master
+        :target: https://requires.io/github/CRBS/etspecutil/requirements?branch=master
         :alt: Dependencies
 
 
-A set of utilities to run Etphantom from the command line
+A set of utilities to run Etspec (formerly known as Etphantom)  
+from the command line
 
 * Free software: Not open source
-* Documentation: https://etphantomutil.readthedocs.io.
+* Documentation: https://etspecutil.readthedocs.io.
 
 Features
 --------

@@ -23,25 +23,25 @@ test_requirements = [
 ]
 
 setup(
-    name='etphantomutil',
+    name='etspecutil',
     version='0.1.0',
-    description="A set of utilities to run Etphantom from the command line",
+    description="A set of utilities to run Etspec (formerly known asEtphantom) from the command line",
     long_description=readme + '\n\n' + history,
     author="Christopher Churas",
     author_email='churas@ncmir.ucsd.edu',
-    url='https://github.com/coleslaw481/etphantomutil',
+    url='https://github.com/CRBS/etspecutil',
     packages=[
-        'etphantomutil',
+        'etspecutil',
     ],
-    package_dir={'etphantomutil':
-                 'etphantomutil'},
-    scripts = ['etphantomutil/rotate_3dmarkers.py',
-               'etphantomutil/shift_fidfilemarkers.py',
-               'etphantomutil/create_tiltseries.py'],
+    package_dir={'etspecutil':
+                 'etspecutil'},
+    scripts = ['etspecutil/rotate_3dmarkers.py',
+               'etspecutil/shift_fidfilemarkers.py',
+               'etspecutil/create_tiltseries.py'],
     include_package_data=True,
     install_requires=requirements,
     zip_safe=False,
-    keywords='etphantomutil',
+    keywords='etspecutil',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Science/Research',

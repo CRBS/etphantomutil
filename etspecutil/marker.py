@@ -9,7 +9,7 @@ import os.path
 
 logger = logging.getLogger(__name__)
 
-from etphantomutil import util
+from etspecutil import util
 
 
 class InvalidAngleError(Exception):

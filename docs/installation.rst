@@ -8,11 +8,11 @@ Installation
 Stable release
 --------------
 
-To install etphantomutil, run this command in your terminal:
+To install etspecutil, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install etphantomutil
+    $ pip install etspecutil
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -24,19 +24,19 @@ you through the process.
 From sources
 ------------
 
-The sources for etphantomutil can be downloaded from the `Github repo`_.
+The sources for etspecutil can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/coleslaw481/etphantomutil
+    $ git clone git://github.com/CRBS/etspecutil
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/coleslaw481/etphantomutil/tarball/master
+    $ curl  -OL https://github.com/CRBS/etspecutil/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -45,5 +45,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/coleslaw481/etphantomutil
-.. _tarball: https://github.com/coleslaw481/etphantomutil/tarball/master
+.. _Github repo: https://github.com/CRBS/etspecutil
+.. _tarball: https://github.com/CRBS/etspecutil/tarball/master

@@ -15,13 +15,13 @@ import tempfile
 import shutil
 import logging
 
-from etphantomutil.marker import MarkersList
-from etphantomutil.marker import MarkersFrom3DMarkersFileFactory
-from etphantomutil import rotate_3dmarkers
-from etphantomutil.rotate_3dmarkers import Parameters
+from etspecutil.marker import MarkersList
+from etspecutil.marker import MarkersFrom3DMarkersFileFactory
+from etspecutil import rotate_3dmarkers
+from etspecutil.rotate_3dmarkers import Parameters
 
 
-class TestEtphantomutil(unittest.TestCase):
+class TestRotate3DMarkers(unittest.TestCase):
 
     def setUp(self):
         pass

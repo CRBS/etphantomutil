@@ -5,7 +5,7 @@
 test_etphantomutil
 ----------------------------------
 
-Tests for `etphantomutil` module.
+Tests for `etspecutil` module.
 """
 
 
@@ -16,15 +16,15 @@ import tempfile
 import math
 import shutil
 
-from etphantomutil.marker import Marker
-from etphantomutil.marker import MarkersList
+from etspecutil.marker import Marker
+from etspecutil.marker import MarkersList
 
-from etphantomutil.marker import MarkersFrom3DMarkersFileFactory
-from etphantomutil.marker import InvalidAngleError
-from etphantomutil.marker import CommonByIndexMarkersListFilter
+from etspecutil.marker import MarkersFrom3DMarkersFileFactory
+from etspecutil.marker import InvalidAngleError
+from etspecutil.marker import CommonByIndexMarkersListFilter
 
 
-class TestEtphantomutil(unittest.TestCase):
+class TestMarker(unittest.TestCase):
 
     def setUp(self):
         pass

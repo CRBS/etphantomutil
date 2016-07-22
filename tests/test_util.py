@@ -2,25 +2,24 @@
 # -*- coding: utf-8 -*-
 
 """
-test_etphantomutil
+test_etspecutil
 ----------------------------------
 
-Tests for `etphantomutil` module.
+Tests for `etspecutil` module.
 """
 
 
 import sys
 import unittest
-import os.path
 import tempfile
 import shutil
 import os
 import stat
 
-from etphantomutil import util
+from etspecutil import util
 
 
-class TestEtphantomutil(unittest.TestCase):
+class TestUtil(unittest.TestCase):
 
     def setUp(self):
         pass
