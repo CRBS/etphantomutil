@@ -140,7 +140,7 @@ def main(arglist):
     """Main entry point of script to create tilt series
     :param arglist: Should be set to sys.argv by caller
     """
-    
+
     desc = """
               Wrapper application that creates simulated electron tomography
               tilt series using from SBEM MRC using ETspec
