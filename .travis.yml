@@ -7,6 +7,9 @@ python:
 #  - "3.5"
 # command to install dependencies
 install: 
+  - pip install coveralls
   - pip install .
 # command to run tests
-script: make test
+script: coverage run --source etspecutil setup.py test
+
+after_success: coveralls
