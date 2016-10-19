@@ -17,6 +17,15 @@ class InvalidAngleError(Exception):
     """
     pass
 
+class UnsetFiducialFileError(Exception):
+    """Raised when attempting to write to Unset Fiducial File
+    """
+    pass
+
+class UnsetMarkersListError(Exception):
+    """Raised when attempting to pass None for MarkersList
+    """
+    pass
 
 class MarkersList(object):
     """Represents a set of markers
@@ -257,8 +266,21 @@ class MarkersToIMODFiducialFileWriter(object):
         self._binary = binary
 
     def write_markers(self, markers):
-        """Writes IMOD fiducial file
+        """Writes IMOD fiducial file with data from `markers` object passed in
+        :param markers: MarkersList object containing markers to write out
+        :raises UnsetFiducialFileError: If fiducial file set via constructor
+                is None
+        :raises UnsetMarkersListError if markers passed into this method is
+         None
+        :raises Exception: If invocation of point2model binary has non-zero
+        exit code
         """
+        if self._fiducialfile is None:
+            raise UnsetFiducialFileError('Fiducial File is set to None')
+
+        if markers is None:
+            raise UnsetMarkersListError('markers cannot be None')
+
         try:
             temp_dir = tempfile.mkdtemp()
             tmpfile = os.path.join(temp_dir, 'out.txt')
