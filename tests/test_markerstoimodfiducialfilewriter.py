@@ -41,7 +41,6 @@ class TestMarkersToIMODFiducialFileWriter(unittest.TestCase):
         mwriter.set_fiducial_file('foo')
         self.assertEqual(mwriter.get_fiducial_file(), 'foo')
 
-
     def test_write_markers_no_fiducial_file(self):
 
         mwriter = MarkersToIMODFiducialFileWriter(None)

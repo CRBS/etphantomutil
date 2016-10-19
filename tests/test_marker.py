@@ -413,7 +413,7 @@ class TestMarker(unittest.TestCase):
         thelist.append(mlist)
         filt = CommonByIndexMarkersListFilter(thelist)
 
-        com,uni = filt.filterMarkers(mlist)
+        com, uni = filt.filterMarkers(mlist)
 
         self.assertTrue(len(uni.get_markers()) == 0)
         self.assertTrue(len(com.get_markers()) == 3)
@@ -422,7 +422,6 @@ class TestMarker(unittest.TestCase):
         self.assertEqual(m.get_x(), 2)
         self.assertEqual(m.get_y(), 3)
         self.assertEqual(m.get_z(), 4)
-
 
     # test Common 2 markerslist identical
     def test_filtermarkers_two_identical_markerlist(self):
@@ -435,7 +434,7 @@ class TestMarker(unittest.TestCase):
         thelist.append(mlist)
         filt = CommonByIndexMarkersListFilter(thelist)
 
-        com,uni = filt.filterMarkers(mlist)
+        com, uni = filt.filterMarkers(mlist)
 
         self.assertTrue(len(uni.get_markers()) == 0)
         self.assertTrue(len(com.get_markers()) == 3)
@@ -446,7 +445,7 @@ class TestMarker(unittest.TestCase):
         self.assertEqual(m.get_z(), 4)
 
     # test Common 3 markerslist one missing in each
-    def test_filtermarkers_one_markerlist(self):
+    def test_filtermarkers_three_list_one_missing_markerlist(self):
         mlist1 = MarkersList()
         mlist1.add_marker(1, 2, 3, 4)
         mlist1.add_marker(1, 2, 3, 5)
@@ -475,7 +474,7 @@ class TestMarker(unittest.TestCase):
 
         filt = CommonByIndexMarkersListFilter(thelist)
 
-        com,uni = filt.filterMarkers(mlist1)
+        com, uni = filt.filterMarkers(mlist1)
 
         self.assertTrue(len(uni.get_markers()) == 1)
         self.assertTrue(len(com.get_markers()) == 4)
@@ -483,7 +482,7 @@ class TestMarker(unittest.TestCase):
         self.assertEqual(uni.get_markers()[0].get_index(), 2)
         self.assertEqual(uni.get_markers()[0].get_z(), 6)
 
-        com,uni = filt.filterMarkers(mlist2)
+        com, uni = filt.filterMarkers(mlist2)
 
         self.assertTrue(len(uni.get_markers()) == 1)
         self.assertTrue(len(com.get_markers()) == 4)
@@ -491,7 +490,7 @@ class TestMarker(unittest.TestCase):
         self.assertEqual(uni.get_markers()[0].get_index(), 3)
         self.assertEqual(uni.get_markers()[0].get_y(), 3)
 
-        com,uni = filt.filterMarkers(mlist3)
+        com, uni = filt.filterMarkers(mlist3)
 
         self.assertTrue(len(uni.get_markers()) == 2)
         self.assertTrue(len(com.get_markers()) == 3)

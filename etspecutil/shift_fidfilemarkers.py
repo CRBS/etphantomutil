@@ -41,7 +41,6 @@ def _setup_logging(theargs):
     logging.getLogger('etspecutil.util').setLevel(theargs.numericloglevel)
 
 
-
 def shift_fiducial_file_markers(theargs):
     """Rotates 3DMarkers.txt file
     """

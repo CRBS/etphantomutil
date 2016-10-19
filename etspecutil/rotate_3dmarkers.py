@@ -40,7 +40,6 @@ def _setup_logging(theargs):
     logging.getLogger('etspecutil.util').setLevel(theargs.numericloglevel)
 
 
-
 def rotate_markers_file(theargs):
     """Rotates 3DMarkers.txt file
     """

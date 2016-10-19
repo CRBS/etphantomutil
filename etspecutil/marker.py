@@ -17,15 +17,18 @@ class InvalidAngleError(Exception):
     """
     pass
 
+
 class UnsetFiducialFileError(Exception):
     """Raised when attempting to write to Unset Fiducial File
     """
     pass
 
+
 class UnsetMarkersListError(Exception):
     """Raised when attempting to pass None for MarkersList
     """
     pass
+
 
 class MarkersList(object):
     """Represents a set of markers
@@ -295,6 +298,7 @@ class MarkersToIMODFiducialFileWriter(object):
 
         finally:
             shutil.rmtree(temp_dir)
+
 
 class CommonByIndexMarkersListFilter(object):
     """Removes Marker objects from Markers objects that don't share indexes with

@@ -39,7 +39,8 @@ def _setup_logging(theargs):
     logging.basicConfig(format=theargs.logformat)
     logging.getLogger('etspecutil.marker').setLevel(theargs.numericloglevel)
     logging.getLogger('etspecutil.util').setLevel(theargs.numericloglevel)
-    logging.getLogger('etspecutil.tiltseries').setLevel(theargs.numericloglevel)
+    logging.getLogger('etspecutil.tiltseries').\
+        setLevel(theargs.numericloglevel)
 
 
 def create_tiltseries(theargs):
@@ -49,7 +50,7 @@ def create_tiltseries(theargs):
     if theargs.cores is None:
         try:
             cpucount = multiprocessing.cpu_count()
-        except NotImplementedError as e:
+        except NotImplementedError:
             logger.exception('Unable to obtain cpu count from '
                              'multiprocessing.cpu_count() defaulting to 1')
             cpucount = 1
@@ -105,10 +106,10 @@ def _parse_arguments(desc, args):
                              '(default 0.0004)')
     parser.add_argument("--numrotations", default='',
                         help="Used as an easier alternate"
-                                              "for rotationangles flag, lets"
-                                              "one specify number of tilts"
-                                              "and the code generates optimal"
-                                              "angles")
+                             "for rotationangles flag, lets"
+                             "one specify number of tilts"
+                             "and the code generates optimal"
+                             "angles")
     parser.add_argument("--rotationangles", default='',
                         help='Comma delimited list of rotation angles'
                              'each one will generate a tilt series.'
@@ -122,7 +123,8 @@ def _parse_arguments(desc, args):
                              'of cores on machine or 1 if unable'
                              'to determine core count)')
     parser.add_argument("--etspecbin", default='',
-                        help='Sets directory where ETspec/ETPhantom binaries reside'
+                        help='Sets directory where ETspec/ETPhantom binaries '
+                             'reside'
                              '(default empty string)')
     parser.add_argument("--log", dest="loglevel", default='WARNING',
                         choices=['DEBUG', 'INFO', 'WARNING', 'ERROR',

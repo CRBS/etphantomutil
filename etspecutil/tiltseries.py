@@ -21,7 +21,7 @@ class TiltSeriesCreator(object):
     EXT_MEAN_EXT = '_ext_mean' + MRC_EXT
     RAW_TLT_EXT = '.rawtlt'
     WARPZ_EXT = '_warpz_0' + MRC_EXT
-    MARKERMRC_EXT = '_marker_0' +MRC_EXT
+    MARKERMRC_EXT = '_marker_0' + MRC_EXT
     PAR_EXT = '.par'
     PRO_EXT = '.pro'
     LOG_EXT = '.log'
@@ -69,7 +69,8 @@ class TiltSeriesCreator(object):
 
         if theargs.numrotations is not '':
             logger.info('Numrotations set to: ' + theargs.numrotations)
-            self._rawrotationlist = util.get_evenly_distributed_rotations(int(theargs.numrotations))
+            self._rawrotationlist = util.\
+                get_evenly_distributed_rotations(int(theargs.numrotations))
         else:
             self._rawrotationangles = theargs.rotationangles
 
@@ -93,7 +94,7 @@ class TiltSeriesCreator(object):
 
         self._inputmrcname = os.path.basename(self._inputmrc)
 
-        self._mrcname = re.sub(TiltSeriesCreator.MRC_EXT + '$','',
+        self._mrcname = re.sub(TiltSeriesCreator.MRC_EXT + '$', '',
                                self._inputmrcname)
         self._unimrc = self._mrcname + TiltSeriesCreator.UNI_MRC_EXT
 
@@ -107,13 +108,12 @@ class TiltSeriesCreator(object):
 
         self._projectionmrc = self._mrcname + TiltSeriesCreator.PROJECTION_EXT
 
-        self._projectionclipmrc = self._mrcname + TiltSeriesCreator.PROJECTION_CLIP_EXT
+        self._projectionclipmrc = (self._mrcname +
+                                   TiltSeriesCreator.PROJECTION_CLIP_EXT)
 
-        self._projectionclipfid = self._mrcname + TiltSeriesCreator.PROJECTION_CLIP +\
-                                  TiltSeriesCreator.FID_EXT
-
-
-
+        self._projectionclipfid = (self._mrcname +
+                                   TiltSeriesCreator.PROJECTION_CLIP +
+                                   TiltSeriesCreator.FID_EXT)
 
         rotations = [float(0)]
 
@@ -131,7 +131,8 @@ class TiltSeriesCreator(object):
             rotations.extend(self._rawrotationlist)
 
         self._rotationangles = sorted(rotations)
-        logger.info('Processing ' + str(len(self._rotationangles)) + ' rotations')
+        logger.info('Processing ' + str(len(self._rotationangles)) +
+                    ' rotations')
         for r in self._rotationangles:
             logger.info('Rotation: ' + str(r))
 
@@ -175,7 +176,8 @@ class TiltSeriesCreator(object):
     def _run_all_255(self):
         """Runs all_255 command
         """
-        cmd = (os.path.join(self._etspecbin, 'all_255') + ' ' + self._inputmrc + ' ' +
+        cmd = (os.path.join(self._etspecbin, 'all_255') + ' ' +
+               self._inputmrc + ' ' +
                os.path.join(self._workdir, self._unimrc))
         exitcode, out, err = util.run_mpiexec_command(cmd, self._mpiexec,
                                                       self._cores)
@@ -205,7 +207,6 @@ class TiltSeriesCreator(object):
                                                       1)
         if exitcode != 0:
             raise Exception('Unable to run rawtlt : ' + err)
-
 
     def _get_warpz_dir(self):
         """Gets warpz dir
@@ -301,7 +302,7 @@ class TiltSeriesCreator(object):
             rotationdir = os.path.join(self._outdir, str(rotation) + '_' +
                                        TiltSeriesCreator.TILTSERIES_DIR_NAME)
             if os.path.isdir(rotationdir):
-                logger.info('Skipping rotation ' + str(rotation)+
+                logger.info('Skipping rotation ' + str(rotation) +
                             ' since directory exists')
                 continue
 
@@ -343,7 +344,8 @@ class TiltSeriesCreator(object):
             markers = mfac.get_markerslist()
             com, uni = filt.filterMarkers(markers)
             for m in uni.get_markers():
-                logger.debug('Unique marker ommitted: ' + m.get_3dmarker_format())
+                logger.debug('Unique marker ommitted: ' +
+                             m.get_3dmarker_format())
 
             com_txt = os.path.join(self._get_tracking_dir(),
                                    TiltSeriesCreator.TWO_D_MARKERS_COMMON_TXT)
@@ -382,8 +384,10 @@ class TiltSeriesCreator(object):
             else:
                 if destrawtlt is not None:
 
-                    shutil.copy(destrawtlt,os.path.join(resultdir,self._mrcname + tiltname +
-                                                        TiltSeriesCreator.RAW_TLT_EXT))
+                    shutil.copy(destrawtlt,
+                                os.path.join(resultdir,
+                                             self._mrcname + tiltname +
+                                             TiltSeriesCreator.RAW_TLT_EXT))
             counter += 1
 
     def _generate_tilt_series(self, rotation, rotationdir):
@@ -406,7 +410,7 @@ class TiltSeriesCreator(object):
         """
         markermrc = os.path.join(self._get_marker_dir(), self._markermrc)
         tmp_mrc = os.path.join(self._get_marker_dir(), 'tmp.mrc')
-        cmd = ('rotatevol -angles ' + str(rotation) +',0,0 ' +
+        cmd = ('rotatevol -angles ' + str(rotation) + ',0,0 ' +
                markermrc + ' ' + tmp_mrc)
 
         exitcode, out, err = util.run_external_command(cmd)
@@ -422,7 +426,8 @@ class TiltSeriesCreator(object):
         """
         (x, y, z) = self._get_mrc_marker_image_dimensions()
         three_d_markers_file = os.path.join(self._get_marker_dir(),
-                                            TiltSeriesCreator.THREE_D_MARKERS_TXT)
+                                            TiltSeriesCreator.
+                                            THREE_D_MARKERS_TXT)
         cmd = ('rotate_3dmarkers.py --angle ' + str(rotation) +
                ' --width ' + str(x) + ' --height ' + str(y) + ' ' +
                three_d_markers_file)
@@ -511,9 +516,10 @@ class TiltSeriesCreator(object):
         """runs point2model for fid file
         """
         common_fid = os.path.join(self._workdir,
-                                            self._mrcname +
-                                            TiltSeriesCreator.PROJECTION_CLIP +
-                                            TiltSeriesCreator.FID_EXT)
+                                  self._mrcname +
+                                  TiltSeriesCreator.PROJECTION_CLIP +
+                                  TiltSeriesCreator.FID_EXT)
+
         cmd = ('point2model -circle 6 ' +
                os.path.join(self._get_tracking_dir(),
                             TiltSeriesCreator.TWO_D_MARKERS_COMMON_TXT) + ' ' +
@@ -529,17 +535,18 @@ class TiltSeriesCreator(object):
            projection
         """
         common_fid = os.path.join(self._workdir,
-                                            self._mrcname +
-                                            TiltSeriesCreator.PROJECTION_CLIP +
-                                            TiltSeriesCreator.FID_EXT)
+                                  self._mrcname +
+                                  TiltSeriesCreator.PROJECTION_CLIP +
+                                  TiltSeriesCreator.FID_EXT)
+
         (x, y, z) = self._get_mrc_marker_image_dimensions()
         cmd = ('shift_fidfilemarkers.py --xshift ' + str(int(int(x)/3)) +
                ' --yshift ' +
                str(int(int(y)/3)) + ' ' +
                common_fid + ' ' +
                os.path.join(self._workdir, self._mrcname +
-                                            TiltSeriesCreator.PROJECTION +
-                                            TiltSeriesCreator.FID_EXT))
+                            TiltSeriesCreator.PROJECTION +
+                            TiltSeriesCreator.FID_EXT))
 
         exitcode, out, err = util.run_external_command(cmd)
         if exitcode != 0:

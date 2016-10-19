@@ -33,7 +33,7 @@ class TestMarkersFromIMODFiducialFileFactory(unittest.TestCase):
             mfac = MarkersFromIMODFiducialFileFactory(None)
             mlist = mfac.get_markers()
             self.assertEqual(mlist.get_markers(), [])
-            non_exist_file = os.path.join(temp_dir,'foo.txt')
+            non_exist_file = os.path.join(temp_dir, 'foo.txt')
             mfac = MarkersFromIMODFiducialFileFactory(non_exist_file)
             mlist = mfac.get_markers()
             self.assertEqual(mlist.get_markers(), [])
@@ -59,7 +59,7 @@ class TestMarkersFromIMODFiducialFileFactory(unittest.TestCase):
             mfac = MarkersFromIMODFiducialFileFactory(fid_file)
             mfac.set_model2point_binary('false')
             try:
-                mlist = mfac.get_markers()
+                mfac.get_markers()
                 self.fail('Expected exception')
             except Exception as e:
                 self.assertTrue(str(e).startswith('Non zero exit code when '
@@ -81,16 +81,16 @@ class TestMarkersFromIMODFiducialFileFactory(unittest.TestCase):
             f.write('#!/usr/bin/env python\n\n')
             f.write('import sys\n')
             f.write('f = open(sys.argv[4], "w")\n')
-            f.write('f.write("     1      188.52      283.08        0.00\\n")\n')
-            f.write('f.write("     1      192.29      283.06        1.00\\n")\n')
-            f.write('f.write("     1      196.04      283.04        2.00\\n")\n')
+            f.write('f.write("     1      188.52      283.08        '
+                    '0.00\\n")\n')
+            f.write('f.write("     1      192.29      283.06        '
+                    '1.00\\n")\n')
+            f.write('f.write("     1      196.04      283.04        '
+                    '2.00\\n")\n')
             f.write('f.close()\n')
             f.flush()
             f.close()
             os.chmod(fakemodel2point, stat.S_IRWXU)
-            print 'XXXXXX',temp_dir
-            # import time
-            # time.sleep(1000)
             mfac.set_model2point_binary(fakemodel2point)
 
             mlist = mfac.get_markers()
@@ -104,7 +104,6 @@ class TestMarkersFromIMODFiducialFileFactory(unittest.TestCase):
 
         finally:
             shutil.rmtree(temp_dir)
-
 
 
 if __name__ == '__main__':

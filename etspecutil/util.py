@@ -4,7 +4,7 @@ import subprocess
 import logging
 import shlex
 import string
-import math
+
 logger = logging.getLogger(__name__)
 
 
@@ -49,8 +49,10 @@ def run_mpiexec_command(cmd_to_run, mpiexec, numcores):
 
 
 def get_tilt_series_label(tiltnumber):
-    """Generates a tilt series label using the alphabet as a base 26 number system
-       For example 0 would = a 25 = z 26 = ba 27 = bb (there is no aa cause a=0)
+    """Generates a tilt series label using the alphabet as a base 26 number
+       system
+       For example 0 would = a 25 = z 26 = ba 27 = bb
+       (there is no aa cause a=0)
        :returns: tiltseries label by converting tiltnumber to base 26
     """
     base = 26
@@ -64,6 +66,7 @@ def get_tilt_series_label(tiltnumber):
     convertedval = string.ascii_lowercase[num] + convertedval
     return convertedval
 
+
 def get_evenly_distributed_rotations(num_rotations):
 
     rot_list = []
@@ -74,4 +77,3 @@ def get_evenly_distributed_rotations(num_rotations):
         rot_list.append(cur_rot)
         cur_rot += degree_delta
     return rot_list
-
