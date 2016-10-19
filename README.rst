@@ -8,9 +8,8 @@ etspecutil
 .. image:: https://img.shields.io/travis/CRBS/etspecutil.svg
         :target: https://travis-ci.org/CRBS/etspecutil
 
-.. image:: https://readthedocs.io/projects/etspecutil/badge/?version=latest
-        :target: https://readthedocs.io/projects/etspecutil/?badge=latest
-        :alt: Documentation Status
+.. image:: https://coveralls.io/repos/github/CRBS/etspecutil/badge.svg?branch=master
+        :target: https://coveralls.io/github/CRBS/etspecutil?branch=master
 
 .. image:: https://requires.io/github/CRBS/etspecutil/requirements.svg?branch=master
         :target: https://requires.io/github/CRBS/etspecutil/requirements?branch=master
