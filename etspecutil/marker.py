@@ -210,6 +210,14 @@ class MarkersFromIMODFiducialFileFactory(object):
         """Gets markers from IMOD fiducial file
         """
         markers = MarkersList()
+        if self._fiducialfile is None:
+            logger.warning('Fiducial file is set to None')
+            return markers
+
+        if not os.path.isfile(self._fiducialfile):
+            logger.warning('Fiducial file path does not point to file')
+            return markers
+
         try:
             temp_dir = tempfile.mkdtemp()
             outfile = os.path.join(temp_dir, 'temp.txt')
@@ -219,12 +227,11 @@ class MarkersFromIMODFiducialFileFactory(object):
             if ecode != 0:
                 raise Exception('Non zero exit code when running : ' + cmd +
                                 ' : ' + err)
-                return None
+
             fac = MarkersFrom3DMarkersFileFactory(outfile)
             return fac.get_markerslist()
         finally:
             shutil.rmtree(temp_dir)
-        return markers
 
 
 class MarkersToIMODFiducialFileWriter(object):
