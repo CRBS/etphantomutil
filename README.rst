@@ -19,7 +19,7 @@ etspecutil
 A set of utilities to run Etspec (formerly known as Etphantom)  
 from the command line
 
-* Free software: Not open source See LICENSE.txt for more information
+* Free software: Not open source See LICENSE.txt_ for more information
 
 Tools
 -------
@@ -67,3 +67,4 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. .. _LICENSE.txt: https://github.com/CRBS/etspecutil/blob/master/LICENSE.txt
