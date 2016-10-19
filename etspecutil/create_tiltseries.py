@@ -136,18 +136,22 @@ def _parse_arguments(desc, args):
     return parser.parse_args(args, namespace=pargs)
 
 
-def main():
+def main(arglist):
+    """Main entry point of script to create tilt series
+    :param arglist: Should be set to sys.argv by caller
+    """
+    
     desc = """
               Wrapper application that creates simulated electron tomography
               tilt series using from SBEM MRC using ETspec
            """
 
-    theargs = _parse_arguments(desc, sys.argv[1:])
-    theargs.program = sys.argv[0]
+    theargs = _parse_arguments(desc, arglist[1:])
+    theargs.program = arglist[0]
     theargs.version = etspecutil.__version__
     _setup_logging(theargs)
 
     create_tiltseries(theargs)
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
