@@ -45,9 +45,30 @@ class TiltSeriesCreator(object):
     TWO_D_MARKERS_COMMON_TXT = '2Dmarkers_common.txt'
 
     def __init__(self, theargs):
-        """Constructor
-        """
+        """Constructor that takes one parameter which should contain
+        a whole bunch of attributes as defined below
 
+        :param theargs: Object with the following attributes set
+                        theargs.outputdirectory
+                        theargs.inputmrcfile
+                        theargs.begintilt
+                        theargs.endtilt
+                        theargs.tiltshift
+                        theargs.cores
+                        theargs.mpiexec
+                        theargs.nummarkers
+                        theargs.bottommarkersize
+                        theargs.topmarkersize
+                        theargs.markernoise
+                        theargs.aparam
+                        theargs.markera
+                        theargs.shrinkage
+                        theargs.projmaxangle
+                        theargs.numrotations
+                        theargs.rotatinoangles
+                        theargs.etspecbin
+        :raises AttributeError: if the above attributes are not set
+        """
         self._outdir = theargs.outputdirectory
         self._workdir = os.getcwd()
         self._inputmrc = os.path.abspath(theargs.inputmrcfile)
@@ -66,7 +87,6 @@ class TiltSeriesCreator(object):
         self._projmaxangle = theargs.projmaxangle
 
         self._rawrotationangles = None
-
         if theargs.numrotations is not '':
             logger.info('Numrotations set to: ' + theargs.numrotations)
             self._rawrotationlist = util.\
