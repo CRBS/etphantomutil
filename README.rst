@@ -33,7 +33,7 @@ Dependencies
 
 * `Argparse <https://pypi.python.org/pypi/argparse>`_
 * Working installation of ETspec
-* IMOD
+* `IMOD <http://bio3d.colorado.edu/imod/>`_
 
 Compatibility
 -------------
@@ -61,8 +61,6 @@ Credits
 ---------
 
 * Tsvi Katchalski did initial protoype development of these scripts and the steps take for creation of simulated electron tomography dataset
-
- **rotate_3dmarkers.py, shift_fidfilemarkers.py, and create_tiltseries.py**
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
