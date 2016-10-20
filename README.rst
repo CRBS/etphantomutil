@@ -54,7 +54,7 @@ Installation
 Usage
 ---------
 
-See <https://github.com/crbs/etspecutil/wiki>
+See https://github.com/crbs/etspecutil/wiki
 
 License
 -------
