@@ -67,4 +67,4 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-.. .. _LICENSE.txt: https://github.com/CRBS/etspecutil/blob/master/LICENSE.txt
+.. _LICENSE.txt: https://github.com/CRBS/etspecutil/blob/master/LICENSE.txt
