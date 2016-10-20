@@ -51,6 +51,11 @@ Installation
   make dist
   pip install dist/etspecutil*whl
 
+Usage
+---------
+
+See <https://github.com/crbs/etspecutil/wiki>
+
 License
 -------
 
