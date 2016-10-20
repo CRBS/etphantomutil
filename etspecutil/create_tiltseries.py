@@ -106,7 +106,7 @@ def _parse_arguments(desc, args):
                              '(default 0.0004)')
     parser.add_argument("--numrotations", default='',
                         help="Used as an easier alternate"
-                             "for rotationangles flag, lets"
+                             "for --rotationangles flag, lets"
                              "one specify number of tilts"
                              "and the code generates optimal"
                              "angles")
