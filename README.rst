@@ -60,7 +60,8 @@ See LICENSE.txt_
 Credits
 ---------
 
-* Tsvi Katchalski did initial prototyping of logic that went into these scripts
+* Tsvi Katchalski did initial protoype development of these scripts and the steps take for creation of simulated electron tomography dataset
+
  **rotate_3dmarkers.py, shift_fidfilemarkers.py, and create_tiltseries.py**
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
