@@ -63,11 +63,15 @@ License
 
 See LICENSE.txt_
 
+Acknowledgements
+----------------
+
+* This work was supported by \<enter info here\>
 
 Credits
 ---------
 
-* Tsvi Katchalski did initial protoype development of these scripts and the steps take for creation of simulated electron tomography dataset
+* Tsvi Katchalski did initial protoype development of these scripts and designed the steps to take for creation of multi-tilt simulated electron tomography dataset
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
