@@ -16,8 +16,10 @@ etspecutil
         :alt: Dependencies
 
 
-A set of utilities to run Etspec (formerly known as Etphantom)  
+A set of utilities to run ETspec (formerly known as Etphantom)  
 from the command line
+
+**NOTE:** This package does **NOT** include **ETspec**. For a copy of **ETspec** send an email to etspec@ncmir.ucsd.edu
 
 * Free software: Not open source See LICENSE.txt_ for more information
 
@@ -32,7 +34,7 @@ Dependencies
 ------------
 
 * `Argparse <https://pypi.python.org/pypi/argparse>`_
-* Working installation of ETspec
+* Working installation of **ETspec** For a copy of **ETspec** send email to etspec@ncmir.ucsd.edu
 * `IMOD <http://bio3d.colorado.edu/imod/>`_
 
 Compatibility
