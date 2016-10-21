@@ -123,7 +123,7 @@ def _parse_arguments(desc, args):
                              'of cores on machine or 1 if unable'
                              'to determine core count)')
     parser.add_argument("--etspecbin", default='',
-                        help='Sets directory where ETspec/ETPhantom binaries '
+                        help='Sets directory where ET-SPEC/ETPhantom binaries '
                              'reside'
                              '(default empty string)')
     parser.add_argument("--log", dest="loglevel", default='WARNING',
@@ -142,8 +142,9 @@ def main(arglist):
     """
 
     desc = """
-              Wrapper application that creates simulated electron tomography
-              tilt series using from SBEM MRC using ETspec
+              Script that creates simulated electron tomography
+              tilt series using from SBEM MRC using ET-SPEC from
+              the commandline.
            """
 
     theargs = _parse_arguments(desc, arglist[1:])
