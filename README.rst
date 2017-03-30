@@ -17,7 +17,7 @@ etspecutil
 
 
 A set of utilities to run ET-SPEC (formerly known as Etphantom)  
-from the command line
+from the command line **THIS CODES DEPENDS ON ET-SPEC application which is NOT part of this repository see note below**
 
 **NOTE:** This package does **NOT** include **ET-SPEC**. For a copy of **ET-SPEC** send an email to etspec@ncmir.ucsd.edu
 
